@@ -444,4 +444,41 @@ body {
    .main-content{
     padding: 1rem;
    }
+
+    .modal {
+        padding: 0.5rem;                /* spacing from edges */
+        align-items: flex-start;        /* top alignment if modal taller than screen */
+        justify-content: center;        /* horizontal center */
+    }
+
+    .modal-content {
+        width: 100%;                     /* full width */
+        max-width: 95%;                  /* leave small margin */
+        max-height: 90vh;                /* don’t exceed viewport height */
+        overflow-y: auto;                /* scroll if content too tall */
+        border-radius: 10px;
+        padding: 1rem;                    /* inner spacing */
+        box-sizing: border-box;
+    }
+
+    .model-header, .modal-body, .modal-footer {
+        padding: 0.75rem;                /* reduce padding */
+    }
+
+    .form-input, .form-select {
+        font-size: 0.9rem;               /* smaller text */
+        padding: 0.5rem;
+    }
+
+    .close-btn {
+        font-size: 1.25rem;              /* smaller close button */
+    }
+
+    .fab {
+        width: 50px;
+        height: 50px;                     /* smaller floating buttons */
+        font-size: 1.25rem;
+    }
+ 
 }
+
