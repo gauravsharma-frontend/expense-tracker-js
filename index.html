@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Expense Tracker</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+    <!-- header section -->
+ <div class="navbar">
+
+    <div class="logo">
+        💰 Expense Tracker
+    </div>
+
+    <div class="nav-right" id="navRight">
+        <!-- Dynamic content from JS -->
+    </div>
+
+
+
+
+    <!-- AUTH MODAL -->
+<div id="authModal" class="modal">
+  <div class="modal-content">
+
+    <div class="model-header">
+      <h2 id="authTitle">Login</h2>
+      <button class="close-btn" onclick="closeModal('authModal')">&times;</button>
+    </div>
+
+    <div class="modal-body">
+
+      <!-- Name -->
+      <div class="form-group" id="nameField" style="display:none;">
+        <label>Name</label>
+        <input type="text" id="authName" class="form-input">
+      </div>
+
+      <!-- Email -->
+      <div class="form-group">
+        <label>Email</label>
+        <input type="email" id="authEmail" class="form-input">
+      </div>
+
+      <!-- Password -->
+      <div class="form-group">
+        <label>Password</label>
+        <input type="password" id="authPassword" class="form-input">
+      </div>
+
+      <!-- Card -->
+      <div class="form-group" id="cardField" style="display:none;">
+        <label>Card Number</label>
+        <input type="text" id="authCard" class="form-input">
+      </div>
+
+      <!-- Limit -->
+      <div class="form-group" id="limitField" style="display:none;">
+        <label>Spending Limit</label>
+        <input type="number" id="authLimit" class="form-input">
+      </div>
+
+    </div>
+
+    <div class="modal-footer">
+      <button class="btn btn-secondary" onclick="toggleAuth()">Switch</button>
+      <button class="btn btn-primary" onclick="handleAuth()">Submit</button>
+    </div>
+
+  </div>
+</div>
+</div>
+
+    <!-- main section -->
+
+    <div class="main-content">
+        <div class="dashboard-grid">
+            <!-- monthly income -->
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">Monthly Income</h3>
+                    <button class="card-menu"><i class="fas fa-ellipsis-h"></i></button>
+                </div>
+                <div class="amount income-amount">$2.4</div>
+              
+
+            </div>
+
+            <!-- monthly expense -->
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">Monthly Income</h3>
+                    <button class="card-menu"><i class="fas fa-ellipsis-h"></i></button>
+                </div>
+                <div class="amount expense-amount">$2.4</div>
+             
+
+
+
+
+            </div>
+            <!-- last card  -->
+
+            <div class="card my-card">
+                <div class="card-header">
+                    <h3 class="card-title">My card</h3>
+                    <button class="card-menu" style="color: white;"><i class="fas fa-ellipsis-h"></i></button>
+
+                </div>
+                <div style="font-size: 0.75rem ; opacity: 0.8; margin-bottom: 1rem;">Linked to your primary wallet
+                </div>
+                <div class="card-chip"> </div>
+                <div class="card-number">**** **** **** 6524</div>
+                <div class="card-holder">Guest</div>
+
+                <div class="card-logo">
+                    <div class="card-logo-circle logo-red"></div>
+                    <div class="card-logo-circle logo-orange"></div>
+                </div>
+
+
+
+                <div class="spending-section">
+                    <div style="margin-bottom: 0.5rem; font-size: 0.875rem; opacity: 0.9;">Spending limit</div>
+                    <div class="spending-limit">$46525</div>
+                  
+                    <div class="progress-bar">
+                        <div class="progress-fill"></div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+
+
+<!-- transactions section -->
+
+<div class="card transactions-section">
+    <div class="card-header">
+        <h3 class="card-title">Recent Transactions</h3>
+      
+
+    </div>
+
+
+
+   <!-- transactions table -->
+
+   <table class="transactions-table">
+    <thead>
+        <tr>
+            <th>date <i class="fas fa-sort"></i></th>
+                <th>category <i class="fas fa-sort"></i></th>
+                    <th> Amount <i class="fas fa-sort"></i></th>
+                    <th>Status</th>
+                    <th>Action</th>
+        </tr>
+    </thead>
+
+<tbody>
+    <!-- <tr>
+        <td>Jan 14, 2025 </td>
+        <td>Subscription</td>
+        <td>$440.00</td>
+        <td><span class="status-success">Success</span></td>
+        <td><button class="action-btn"><i class="fas fa-ellipsis"></i></button></td>
+    </tr>
+
+      <tr>
+        <td>Jan 10, 2025 </td>
+        <td>Subscription</td>
+        <td>$440.00</td>
+        <td><span class="status-success">Success</span></td>
+        <td><button class="action-btn"><i class="fas fa-ellipsis"></i></button></td>
+    </tr>
+
+
+      <tr>
+        <td>Jan 8, 2025 </td>
+        <td>Subscription</td>
+        <td>$440.00</td>
+        <td><span class="status-success">Success</span></td>
+        <td><button class="action-btn"><i class="fas fa-ellipsis"></i></button></td>
+    </tr> -->
+</tbody>
+
+   </table>
+
+</div>
+
+
+
+
+
+    </div>
+
+
+<!-- income and expense button -->
+
+<div class="add-buttons">
+    <button class="fab fab-income" onclick="openIncomeModel()" >
+        <i class="fas fa-plus"></i>
+    </button>
+
+     <button class="fab fab-expense" onclick="openExpenseModel()">
+        <i class="fas fa-minus"></i>
+    </button>
+</div>
+
+
+<!-- income model -->
+
+<div id="incomeModel" class="modal">
+
+<div class="modal-content">
+    <div class="model-header">
+        <h2 class="modal-title">Add Income</h2>
+        <button  class="close-btn" onclick="closeModal('incomeModel')">&times;</button>
+    </div>
+
+<div class="modal-body">
+
+<form id="incomeForm" autocomplete="off">
+    <div class="form-group">
+        <label for="form-label">Amount</label>
+        <input type="number" class="form-input" id="incomeAmount" placeholder="Enter Amount" required>
+    </div>
+
+<div class="form-group">
+  <label for="form-label">category</label>
+  <select class="form-select" id="incomeCategory" required>
+    <option value="">Select Category</option>
+    <option value="Salary">Salary</option>
+    <option value="freelance">Freelance</option>
+    <option value="business">Business</option>
+    <option value="investment">Investment</option>
+    <option value="other">Other</option>
+
+  </select>
+</div>
+
+
+<div class="form-group">
+    <label class="form-label">Description</label>
+    <input type="text" class="form-input" id="incomeDescription" placeholder="Enter description" required>
+</div>
+
+
+<div class="form-group">
+    <label class="form-label">Date</label>
+    <input type="date" class="form-input" id="incomeDate" placeholder="Enter date" required>
+</div>
+
+
+</form>
+
+
+
+</div>
+
+
+
+<div class="modal-footer">
+    <button class="btn btn-secondary" onclick="closeModal('incomeModel')"> Cancel</button>
+      <button class="btn btn-primary" onclick="addIncome()">Add Income </button>
+</div>
+
+
+</div>
+
+
+</div>
+
+
+<!-- expense modal -->
+
+
+
+<div id="expenseModal" class="modal">
+
+<div class="modal-content">
+    <div class="model-header">
+        <h2 class="modal-title">Add Expense</h2>
+        <button  class="close-btn" onclick="closeModal('expenseModal')">&times;</button>
+    </div>
+
+<div class="modal-body">
+
+<form id="expenseForm" autocomplete="off">
+    <div class="form-group">
+        <label for="form-label">Amount</label>
+        <input type="number" class="form-input" id="expenseAmount" placeholder="Enter Amount" required>
+    </div>
+
+<div class="form-group">
+  <label for="form-label">category</label>
+  <select class="form-select" id="expenseCategory" required>
+    <option value="">Select Category</option>
+    <option value="food">Food</option>
+    <option value="Entertainments">Entertainments</option>
+    <option value="Shopping">Shopping</option>
+    <option value="transport">Transport</option>
+    <option value="utilities">Utilities</option>
+    <option value="other">Other</option>
+
+  </select>
+</div>
+
+
+<div class="form-group">
+    <label class="form-label">Description</label>
+    <input type="text" class="form-input" id="expenseDescription" placeholder="Enter description" required>
+</div>
+
+
+<div class="form-group">
+    <label class="form-label">Date</label>
+    <input type="date" class="form-input" id="expenseDate" placeholder="Enter date" required>
+</div>
+
+
+</form>
+
+
+
+</div>
+
+
+
+<div class="modal-footer">
+    <button class="btn btn-secondary" onclick="closeModal('incomeModel')">Cancel </button>
+      <button class="btn btn-primary" onclick="addExpense()">Add Expenses </button>
+</div>
+
+
+</div>
+
+
+</div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
