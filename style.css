@@ -215,6 +215,22 @@ body {
 
 }
 
+
+.transactions-table td button {
+    background: #fee2e2; 
+    color: #ef4444;      
+    border: none;
+    padding: 8px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.transactions-table td button:hover {
+    background: #ef4444;
+    color: white;
+}
+
 .transactions-table th{
     text-align: left;
     padding: 1rem;
@@ -435,6 +451,16 @@ body {
     .chart-section{
         grid-template-columns: 1fr;
     }
+
+    .table-container {
+        width: 100%;
+        overflow-x: auto; /* Side mein scroll karne dega */
+        display: block;
+    }
+
+    .transactions-table {
+        min-width: 600px; /* Table ko sikadne se rokega */
+    }
 }
 
 @media(max-width : 768px){
@@ -480,5 +506,14 @@ body {
         font-size: 1.25rem;
     }
  
+    .table-container {
+        width: 100%;
+        overflow-x: auto; /* Side mein scroll karne dega */
+        display: block;
+    }
+
+    .transactions-table {
+        min-width: 600px; /* Table ko sikadne se rokega */
+    }
 }
 
