@@ -62,11 +62,17 @@ function toggleAuth() {
 function handleAuth() {
     const email = document.getElementById("authEmail").value;
     const password = document.getElementById("authPassword").value;
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-    if (!email || !password) {
-        alert("Fill all fields");
-        return;
-    }
+if (!email || !password) {
+    alert("Fill all fields");
+    return;
+}
+
+if (!emailPattern.test(email)) {
+    alert("Enter a valid email");
+    return;
+}
 
     if (!isLogin) {
         // SIGNUP
